@@ -16,7 +16,7 @@ public class ReceiverActor extends DrawableActor {
         super();
         noteSpace = textureAtlas.findRegion("ddr-down-empty");
         image = new Image(noteSpace);
-        image.setY(250f);
+        image.setY(500f);
     }
 
     public void draw(Batch batch, float parentAlpha){

@@ -29,12 +29,14 @@ public class NoteActor extends DrawableActor{
     }
 
     /*
-    Now here is the real rub. I want users to be able to see the
-     */
+    Now here is the real rub. I want users to be able to see the notes before they should be played. The distance is 500pixels. I should know the delta on each update.
+    d = v*t 500 = v1000.  v = 0.5 pixels per millisecond. for each delta, multiply by 1000 and cast ot int. Then divide by two.
+    */
 
     @Override
     public void act(float delta){
-        image.setY(speed + image.getY());
+        int currentDistance = (5 * (int)(delta * 1000))/20;
+        image.setY(currentDistance + image.getY());
     }
 
     public void setTimeToPlay(int time){

@@ -65,6 +65,7 @@ public class GameActors extends Stage {
     @Override
     public void act(float delta){
         spawnNotes(delta);
+        //System.out.print(delta );
         super.act(delta);
     }
 }
