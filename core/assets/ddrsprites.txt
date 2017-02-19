@@ -1,0 +1,19 @@
+ddrsprites.png
+size: 64, 134
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+ddr-down-empty
+  rotate: false
+  xy: 0, 0
+  size: 64, 70
+  orig: 64, 70
+  offset: 0, 0
+  index: -1
+ddr-down-full
+  rotate: false
+  xy: 0, 70
+  size: 64, 64
+  orig: 64, 64
+  offset: 0, 0
+  index: -1
