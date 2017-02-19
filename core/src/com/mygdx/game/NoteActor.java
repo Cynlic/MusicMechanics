@@ -8,7 +8,7 @@ import com.badlogic.gdx.scenes.scene2d.Actor;
 import com.badlogic.gdx.scenes.scene2d.ui.Image;
 
 /**
- * Created by harrison on 2/17/17.
+ *Created by harrison on 2/17/17.
  */
 public class NoteActor extends DrawableActor{
     private TextureRegion noteHead;
@@ -27,6 +27,10 @@ public class NoteActor extends DrawableActor{
     public void draw(Batch batch, float parentAlpha){
         image.draw(batch, parentAlpha);
     }
+
+    /*
+    Now here is the real rub. I want users to be able to see the
+     */
 
     @Override
     public void act(float delta){

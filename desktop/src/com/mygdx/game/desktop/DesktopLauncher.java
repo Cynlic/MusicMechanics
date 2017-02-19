@@ -7,6 +7,9 @@ import com.mygdx.game.MusicTest;
 public class DesktopLauncher {
 	public static void main (String[] arg) {
 		LwjglApplicationConfiguration config = new LwjglApplicationConfiguration();
+		config.title = "MusicMechanics!";
+		config.width = 800;
+		config.height = 600;
 		new LwjglApplication(new MusicTest(), config);
 	}
 }

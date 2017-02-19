@@ -12,6 +12,7 @@ import java.util.List;
 import java.util.Optional;
 
 import com.badlogic.gdx.scenes.scene2d.ui.Table;
+import com.badlogic.gdx.utils.viewport.Viewport;
 
 /**
  * Created by harrison on 2/18/17.
@@ -21,7 +22,8 @@ public class GameActors extends Stage {
     private Conductor conductor;
     public List<NoteActor> notes;
 
-    public GameActors(Conductor conductor2){
+    public GameActors(Conductor conductor2, Viewport viewport){
+        super(viewport);
         conductor = conductor2;
         receiverActor = new ReceiverActor();
         addActor(receiverActor);

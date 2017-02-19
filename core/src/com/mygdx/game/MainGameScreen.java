@@ -8,6 +8,8 @@ import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.scenes.scene2d.ui.Image;
+import com.badlogic.gdx.utils.viewport.ScreenViewport;
+import com.badlogic.gdx.utils.viewport.Viewport;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -23,16 +25,16 @@ public class MainGameScreen implements Screen {
     private NoteActor note;
     private TestActor tester;
     private GameActors testActorStage;
+    private ScreenViewport viewport;
+
 
     MainGameScreen(){
-        stage = new Stage();
-        Gdx.input.setInputProcessor(stage);
         conductor = new Conductor();
         List<Integer> beats = conductor.getBeatsInSeconds();
         note = new NoteActor();
         tester = new TestActor();
-        stage.addActor(note);
-        testActorStage = new GameActors(conductor);
+        testActorStage = new GameActors(conductor, new ScreenViewport());
+        testActorStage.getViewport().setScreenSize(800, 600);
     }
 
     public void show(){
