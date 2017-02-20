@@ -21,6 +21,7 @@ public class GameActors extends Stage {
     private ReceiverActor receiverActor;
     private Conductor conductor;
     public List<NoteActor> notes;
+    private GameData gameData;
 
     public GameActors(Conductor conductor2, Viewport viewport){
         super(viewport);
@@ -29,10 +30,14 @@ public class GameActors extends Stage {
         addActor(receiverActor);
         int size = conductor.getBeatsInSeconds().size();
         notes = new ArrayList<>(size);
+        gameData = new GameData();
 
         for (int i = 0; i < conductor.getBeatsInSeconds().size(); i++){
             NoteActor noteActor = new NoteActor();
-            noteActor.setTimeToPlay(conductor.getBeatsInSeconds().get(i));
+            noteActor.setTimeToPlay(conductor.getBeatsInSeconds().get(i)-gameData.leadTime);
+            if(noteActor.getTimeToPlay() < 0){
+                noteActor.setTimeToPlay(0);
+            }
             notes.add(i, noteActor);
         }
 

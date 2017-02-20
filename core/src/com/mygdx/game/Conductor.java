@@ -63,6 +63,7 @@ public class Conductor {
         song = Gdx.audio.newMusic(Gdx.files.internal(songTitle));
     }
 
+
     public void setBPM(int bpm){
         BPM = bpm;
         BPS = BPM / BPS;

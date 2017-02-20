@@ -19,27 +19,39 @@ import java.util.List;
  */
 public class MainGameScreen implements Screen {
 
-    private OrthographicCamera camera;
-    private Stage stage;
     private Conductor conductor;
-    private NoteActor note;
-    private TestActor tester;
     private GameActors testActorStage;
     private ScreenViewport viewport;
-
 
     MainGameScreen(){
         conductor = new Conductor();
         List<Integer> beats = conductor.getBeatsInSeconds();
-        note = new NoteActor();
-        tester = new TestActor();
         testActorStage = new GameActors(conductor, new ScreenViewport());
         testActorStage.getViewport().setScreenSize(800, 600);
     }
 
     public void show(){
         Gdx.input.setInputProcessor(testActorStage);
-        conductor.playSong();
+        //conductor.songThread.start();
+        /*
+        try {
+            conductor.songThread.sleep(GameData.leadTime);
+        } catch (InterruptedException e){
+            System.out.println(e);
+        }
+        conductor.songThread.play();*/
+
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                try{
+                    Thread.currentThread().sleep(GameData.leadTime);
+                } catch (InterruptedException e) {
+
+                }
+                conductor.playSong();
+            }
+        }).start();
     }
 
     public void hide(){
