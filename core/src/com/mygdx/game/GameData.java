@@ -5,7 +5,7 @@ package com.mygdx.game;
  */
 public class GameData {
 
-    public static int leadTime;
+    public static int leadTime = 2000;
     public int distanceFromBottomToReceiveActor;
 
     public GameData(){

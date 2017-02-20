@@ -56,7 +56,7 @@ public class Conductor {
         songLengthSeconds = 60;
         quantization = 16;
         beats = new ArrayList<noteType>(beatNumber);
-        beats = Arrays.asList(noteType.WHOLE, noteType.WHOLE, noteType.WHOLE, noteType.WHOLE, noteType.WHOLE, noteType.WHOLE);
+        beats = Arrays.asList(noteType.EIGHTH, noteType.EIGHTH, noteType.EIGHTH, noteType.EIGHTH, noteType.EIGHTH, noteType.EIGHTH, noteType.EIGHTH, noteType.EIGHTH);
         beatsRelative = makeRelativeList(beats);
         beatsInSeconds = beatsToMilliseconds(beatsRelative);
         songTitle = "120BPMClick.wav";
@@ -248,7 +248,12 @@ public class Conductor {
     }
 
     public int songPositionMS(){
-        return (int)(song.getPosition()*1000);
+
+        if(!song.isPlaying()) {
+            return -10000;
+        }
+        else {return (int)(song.getPosition()*1000);
+        }
     }
 
     public boolean beatsLeftOver (final int currentBeat){
