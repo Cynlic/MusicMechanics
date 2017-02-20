@@ -2,20 +2,11 @@ package com.mygdx.game;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Screen;
-import com.badlogic.gdx.Graphics;
 import com.badlogic.gdx.graphics.GL20;
-import com.badlogic.gdx.graphics.OrthographicCamera;
-import com.badlogic.gdx.graphics.g2d.SpriteBatch;
-import com.badlogic.gdx.scenes.scene2d.Stage;
-import com.badlogic.gdx.scenes.scene2d.ui.Image;
 import com.badlogic.gdx.utils.Timer;
 import com.badlogic.gdx.utils.viewport.ScreenViewport;
-import com.badlogic.gdx.utils.viewport.Viewport;
-
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Optional;
-import java.util.stream.Collectors;
 
 /**
  * Created by harrison on 2/13/17.
@@ -54,13 +45,6 @@ public class MainGameScreen implements Screen {
             mainTimer.scheduleTask(tasks.get(i), ((float)(testActorStage.notesBeforeSound.get(i).getTimeToPlay()+2000)/1000));
             //System.out.println((float)(testActorStage.notesBeforeSound.get(i).getTimeToPlay()+2000)/1000);
         }
-        /*
-        Optional<Integer> timeToDelay = testActorStage.notesBeforeSound.stream().map((e) -> e.getTimeToPlay()).reduce((e, carry)-> carry.sum(e, carry));
-        float timeToDelayF = 0.0f;
-        if (timeToDelay.isPresent()){
-            timeToDelayF = (float)(timeToDelay.get())/1000;
-            System.out.println(timeToDelayF);
-        }*/
 
         mainTimer.scheduleTask(new Timer.Task() {
             @Override
@@ -70,17 +54,6 @@ public class MainGameScreen implements Screen {
             }
         },  (float)(2));
 
-        /*new Thread(new Runnable() {
-            @Override
-            public void run() {
-                try{
-                    Thread.currentThread().sleep(GameData.leadTime);
-                } catch (InterruptedException e) {
-
-                }
-                conductor.playSong();
-            }
-        }).start();*/
         mainTimer.start();
     }
 
@@ -110,5 +83,6 @@ public class MainGameScreen implements Screen {
 
     public void dispose(){
         testActorStage.dispose();
+        conductor.dispose();
     }
 }

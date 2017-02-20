@@ -1,18 +1,13 @@
 package com.mygdx.game;
 
 import com.badlogic.gdx.Input;
-import com.badlogic.gdx.graphics.g2d.Batch;
-import com.badlogic.gdx.scenes.scene2d.Actor;
 import com.badlogic.gdx.scenes.scene2d.InputEvent;
 import com.badlogic.gdx.scenes.scene2d.InputListener;
 import com.badlogic.gdx.scenes.scene2d.Stage;
-
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
-
-import com.badlogic.gdx.scenes.scene2d.ui.Table;
 import com.badlogic.gdx.utils.viewport.Viewport;
 
 /**
@@ -65,6 +60,9 @@ public class GameActors extends Stage {
     }
 
     public void dispose(){
+        super.dispose();
+        notesBeforeSound.clear();
+        notes.clear();
     }
 
     public void spawnNotes(float delta){
@@ -73,8 +71,8 @@ public class GameActors extends Stage {
                 .filter((e) -> conductor.withinBuffer(conductor.songPositionMS(), e.getTimeToPlay(), deltaBuffer)).findAny();
         if (notes.size()>0 && note.isPresent()){
             addActor(notes.get(0));
-            System.out.print("Spawning note at ");
-            System.out.println(conductor.songPostion());
+            //System.out.print("Spawning note at ");
+            //System.out.println(conductor.songPostion());
             notes.remove(0);
         }
     }

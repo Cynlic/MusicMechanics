@@ -13,4 +13,9 @@ public class DrawableActor extends Actor {
         super();
         textureAtlas = new TextureAtlas("ddrsprites.txt");
     }
+
+    public void dispose(){
+        super.clear();
+        textureAtlas.dispose();
+    }
 }

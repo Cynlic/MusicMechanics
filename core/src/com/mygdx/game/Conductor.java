@@ -56,11 +56,22 @@ public class Conductor {
         songLengthSeconds = 60;
         quantization = 16;
         beats = new ArrayList<noteType>(beatNumber);
-        beats = Arrays.asList(noteType.EIGHTH, noteType.EIGHTH, noteType.EIGHTH, noteType.EIGHTH, noteType.EIGHTH, noteType.EIGHTH, noteType.EIGHTH, noteType.EIGHTH);
+        beats = Arrays.asList(noteType.EIGHTH, noteType.EIGHTH, noteType.EIGHTH, noteType.EIGHTH,
+                noteType.EIGHTH, noteType.EIGHTH, noteType.EIGHTH, noteType.EIGHTH,
+                noteType.EIGHTH, noteType.EIGHTH, noteType.EIGHTH, noteType.EIGHTH,
+                noteType.EIGHTH, noteType.EIGHTH, noteType.EIGHTH, noteType.EIGHTH
+        );
         beatsRelative = makeRelativeList(beats);
         beatsInSeconds = beatsToMilliseconds(beatsRelative);
         songTitle = "120BPMClick.wav";
         song = Gdx.audio.newMusic(Gdx.files.internal(songTitle));
+    }
+
+    public void dispose(){
+        beats.clear();
+        beatsInSeconds.clear();
+        beatsRelative.clear();
+        song.dispose();
     }
 
 
@@ -286,6 +297,4 @@ public class Conductor {
             return false;
         }
     }
-
-
 }
